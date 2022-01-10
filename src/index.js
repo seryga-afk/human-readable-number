@@ -1,6 +1,7 @@
 
-module.exports = function toReadable (number) {
-    number = String(number)
+
+function toReadable() {
+    let number = document.querySelector('#inp').value;
     const units = {
         0: '',
         1: 'one',
@@ -34,16 +35,16 @@ module.exports = function toReadable (number) {
         9: 'ninety',
     }
     if(number === '0'){
-        return 'zero'
+        number = 'zero'
     }
     if(number < 20){
-        return number = units[number]
+        number = units[number]
     }else if(number >= 20 && number < 100){
-        return number = (dozens[number[0]] + ' ' + units[number[1]]).trim()
+        number = (dozens[number[0]] + ' ' + units[number[1]]).trim()
     }else if((+(number[1] + number[2])) >= 20 && number >= 100 && number < 1000){
-        return number = (units[number[0]] + ' ' + 'hundred' + ' ' + dozens[number[1]] + ' ' + units[number[2]]).trim()
+        number = (units[number[0]] + ' ' + 'hundred' + ' ' + dozens[number[1]] + ' ' + units[number[2]]).trim()
     }else if((+(number[1] + number[2])) < 20 && number >= 100 && number < 1000){
-        return number = (units[number[0]] + ' ' + 'hundred' + ' ' + units[(+(number[1] + number[2]))]).trim()
+        number = (units[number[0]] + ' ' + 'hundred' + ' ' + units[(+(number[1] + number[2]))]).trim()
     }
-
+    document.querySelector('.result').innerHTML = number;
 }
